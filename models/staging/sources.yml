@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: "Raw CSV data loaded into Iceberg by the Glue ingestion job"
+    schema: bronze
+    tables:
+      - name: orders
+      - name: customers
+      - name: products

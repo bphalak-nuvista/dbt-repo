@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Cleaned orders, one row per order_id (latest version wins)"
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: customer_id
+        data_tests: [not_null]
+      - name: product_id
+        data_tests: [not_null]
+      - name: order_status
+        data_tests:
+          - accepted_values:
+              values: ['COMPLETED', 'SHIPPED', 'PENDING', 'CANCELLED', 'RETURNED']
+
+  - name: stg_customers
+    description: "Cleaned customers, one row per customer_id"
+    columns:
+      - name: customer_id
+        data_tests: [unique, not_null]
+
+  - name: stg_products
+    description: "Cleaned products, one row per product_id"
+    columns:
+      - name: product_id
+        data_tests: [unique, not_null]

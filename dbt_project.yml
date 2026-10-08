@@ -1,0 +1,20 @@
+name: 'lake_pipeline'
+version: '1.0.0'
+config-version: 2
+
+profile: 'default'          # dbt Cloud ignores this; the connection comes from the Cloud environment
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  lake_pipeline:
+    +file_format: iceberg          # every model is stored as an Iceberg table
+    staging:
+      +materialized: table
+      +schema: staging             # -> Glue database "staging"
+    marts:
+      +materialized: table
+      +schema: marts               # -> Glue database "marts"
