@@ -11,7 +11,7 @@ clean-targets: ["target", "dbt_packages"]
 
 models:
   lake_pipeline:
-    +file_format: iceberg          # every model is stored as an Iceberg table
+    +file_format: parquet
     staging:
       +materialized: table
       +schema: staging             # -> Glue database "staging"
