@@ -11,7 +11,7 @@ clean-targets: ["target", "dbt_packages"]
 
 models:
   lake_pipeline:
-    +file_format: parquet
+    +file_format: iceberg
     staging:
       +materialized: table
       +schema: staging             # -> Glue database "staging"
